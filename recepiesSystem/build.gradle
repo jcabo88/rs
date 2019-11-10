@@ -14,8 +14,8 @@ repositories {
 }
 
 bootJar {
-    archivesBaseName = 'gs-spring-boot'
-    archiveVersion =  '0.1.0'
+    archivesBaseName = 'rs'
+    archiveVersion =  '1.0.0'
 }
 
 dependencies {
@@ -25,6 +25,6 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
     implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.1.3.RELEASE'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.3.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.3.RELEASE'
 
 }
