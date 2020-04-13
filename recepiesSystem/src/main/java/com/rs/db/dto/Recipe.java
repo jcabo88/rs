@@ -6,12 +6,19 @@ public class Recipe {
     int index;
     String description;
     String timeToComplete;
+    int numberOfPersons;
+    Ingredient ingredient;
+    String preparationMethod;
 
-    public Recipe(int index, String name, String description, String timeToComplete) {
+    public Recipe(int index, String name, String description, String timeToComplete,
+                  int numberOfPersons, String preparationMethod, Ingredient ingredient) {
         this.index = index;
         this.name = name;
         this.description = description;
         this.timeToComplete = timeToComplete;
+        this.numberOfPersons = numberOfPersons;
+        this.preparationMethod = preparationMethod;
+        this.ingredient = ingredient;
     }
 
     public Recipe() {
@@ -19,6 +26,8 @@ public class Recipe {
         this.index = -1;
         this.description = new String();
         this.timeToComplete = new String();
+        this.description = new String();
+        this.ingredient = new Ingredient();
     }
 
     public int getIndex() { return index; }
