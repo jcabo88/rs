@@ -60,4 +60,28 @@ public class Recipe {
     public void setTimeToComplete(String timeToComplete) {
         this.timeToComplete = timeToComplete;
     }
+
+    public int getNumberOfPersons() {
+        return numberOfPersons;
+    }
+
+    public void setNumberOfPersons(int numberOfPersons) {
+        this.numberOfPersons = numberOfPersons;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getPreparationMethod() {
+        return preparationMethod;
+    }
+
+    public void setPreparationMethod(String preparationMethod) {
+        this.preparationMethod = preparationMethod;
+    }
 }

@@ -4,7 +4,7 @@ import java.io.InvalidObjectException;
 
 public class InputValidationException extends InvalidObjectException {
 
-    public InputValidationException(String message) {
-        super(message);
+    public InputValidationException(ExceptionMessages message) {
+        super(message.getMessage());
     }
 }
