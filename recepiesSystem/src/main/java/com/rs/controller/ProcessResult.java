@@ -16,9 +16,10 @@ public class ProcessResult {
     public Optional<Result> getRecipesByID(int id){
         recipesStorage.getRecipeByIndex(id)
                 .ifPresent(this::getRecipe);
+        // TODO When a result does not exist, the previous result is found
         return Optional.of(this.result);
     }
-
+//    TODO Return List of Recipes
 //    public Optional<Recipe> getRecipesByName(String name){
 //        return recipesStorage.getRecipeByName(name);
 //    }
