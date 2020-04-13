@@ -1,24 +1,27 @@
 package com.rs.db.dto;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Recipe {
 
-    String name;
-    int index;
-    String description;
-    String timeToComplete;
-    int numberOfPersons;
-    Ingredient ingredient;
-    String preparationMethod;
+    private String name;
+    private int index;
+    private String description;
+    private String timeToComplete;
+    private int numberOfPersons;
+    private List<Ingredient> ingredients;
+    private String preparationMethod;
 
     public Recipe(int index, String name, String description, String timeToComplete,
-                  int numberOfPersons, String preparationMethod, Ingredient ingredient) {
+                  int numberOfPersons, String preparationMethod, List<Ingredient> ingredients) {
         this.index = index;
         this.name = name;
         this.description = description;
         this.timeToComplete = timeToComplete;
         this.numberOfPersons = numberOfPersons;
         this.preparationMethod = preparationMethod;
-        this.ingredient = ingredient;
+        this.ingredients = ingredients;
     }
 
     public Recipe() {
@@ -27,7 +30,7 @@ public class Recipe {
         this.description = new String();
         this.timeToComplete = new String();
         this.description = new String();
-        this.ingredient = new Ingredient();
+        this.ingredients = Collections.emptyList();
     }
 
     public int getIndex() { return index; }
