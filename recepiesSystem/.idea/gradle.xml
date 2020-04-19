@@ -10,6 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/rs-DB" />
+            <option value="$PROJECT_DIR$/rs-core" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />

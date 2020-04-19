@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'idea'
-    id "org.springframework.boot" version "2.2.1.RELEASE"
+    id "org.springframework.boot" version "2.2.2.RELEASE"
 }
 
 group 'com.rs'
@@ -9,44 +9,63 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
 bootJar {
-    archivesBaseName = 'rs'
-    archiveVersion =  '1.0.0'
+    mainClassName = 'com.rs.Application'
 }
 
 test {
     useJUnitPlatform()
 }
 
-dependencies {
+subprojects {
+    group 'com.rs'
 
-    // https://mvnrepository.com/artifact/commons-lang/commons-lang
-    implementation group: 'commons-lang', name: 'commons-lang', version: '2.6'
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.0'
-    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.0'
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
-    //implementation group: 'org.springframework.boot', name: 'spring-boot', version: '2.1.3.RELEASE'
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
-    //implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.1.3.RELEASE'
+    apply plugin: 'io.spring.dependency-management'
 
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.1'
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot:2.2.2.RELEASE"
+        }
+    }
 
-    //probes and info enpoints
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.1.3.RELEASE'
+    apply plugin: 'java'
+    jar {
+        manifest {
+            attributes(
+                    "groupId": project.group,
+                    "artifact": project.name,
+                    "Implementation-title": rootProject.name,
+                    "Implementation-version": "1.0.0",
+            )
+        }
+    }
 
-    // Starter with tomcat integrator
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.3.RELEASE'
+    dependencies {
 
-    // Database management
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
-    //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.3.RELEASE'
-    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    // implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+        // https://mvnrepository.com/artifact/commons-lang/commons-lang
+        implementation group: 'commons-lang', name: 'commons-lang', version: '2.6'
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.0'
+        testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.0'
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
+        //implementation group: 'org.springframework.boot', name: 'spring-boot', version: '2.1.3.RELEASE'
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
+        //implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.1.3.RELEASE'
+
+        // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.1'
+
+
+        // Database management
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+        //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.3.RELEASE'
+        // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+        // implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+    }
 }
+

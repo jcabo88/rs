@@ -2,7 +2,6 @@ package com.rs.db;
 
 import com.rs.db.dto.Ingredient;
 import com.rs.db.dto.Recipe;
-import com.rs.db.exceptions.DatabaseException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,8 +2,6 @@ package com.rs.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.rs.db.dto.Recipe;
-import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RecipeResult {
