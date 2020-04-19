@@ -1,21 +1,27 @@
 package com.rs.controller.dto;
 
-public class Result {
-    Object result;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    public Result(Object result) {
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+public class Result {
+
+    @JsonProperty("result")
+    RecipeResult result;
+
+    public Result(RecipeResult result) {
         this.result = result;
     }
 
     public Result(){
-        this.result = new Object();
+        this.result = new RecipeResult();
     }
 
     public Object getResult() {
         return result;
     }
 
-    public void setResult(Object result) {
+    public void setResult(RecipeResult result) {
         this.result = result;
     }
 }
