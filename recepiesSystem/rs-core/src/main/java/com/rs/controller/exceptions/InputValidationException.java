@@ -1,8 +1,11 @@
 package com.rs.controller.exceptions;
 
-import java.io.InvalidObjectException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-public class InputValidationException extends InvalidObjectException {
+
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class InputValidationException extends IllegalArgumentException {
 
     public InputValidationException(ExceptionMessages message) {
         super(message.getMessage());
