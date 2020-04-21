@@ -1,7 +1,7 @@
 package com.rs.db;
 
+import com.rs.db.dto.Ingredient;
 import com.rs.db.dto.Recipe;
-import com.rs.db.exceptions.DatabaseException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +14,20 @@ public class RecipesMockedData implements RecipesStorage {
     private List<Recipe> recipes;
 
     public RecipesMockedData() {
+        List<Ingredient> ingredients1 = new ArrayList<>();
+        ingredients1.add(new Ingredient("egg", "1"));
+        ingredients1.add(new Ingredient("salt", "20g"));
+        List<Ingredient> ingredients2 = new ArrayList<>();
+        ingredients2.add(new Ingredient("rice", "200g"));
+        ingredients2.add(new Ingredient("salt", "20g"));
+
         this.recipes = new ArrayList<>();
-        recipes.add(new Recipe(1, "Huevos Fritos", "Freir los huevos", "5min"));
-        recipes.add(new Recipe(2, "Tortilla francesa", "Batir los huevos " +
-                "y echarlos en la sarten", "5min"));
+        recipes.add(new Recipe(1, "Huevos Fritos", "Freir los huevos", "5min",
+                1, "", ingredients1));
+        recipes.add(new Recipe(2, "Tortilla francesa", "Batir los huevos y echarlos en la sarten", "5min",
+                1, "", ingredients1));
         recipes.add(new Recipe(3, "Arroz blanco", "Freir el arroz durante 2 min "
-                + "y una vez hecho ponerlo a hervir durante 5 min", "7min"));
+                + "y una vez hecho ponerlo a hervir durante 5 min", "7min", 2, "", ingredients2));
     }
 
     //We use a singleton to persist the data across all the HTTP requests.

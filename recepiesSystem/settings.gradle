@@ -1,2 +1,4 @@
 rootProject.name = 'recepiesSystem'
+include 'rs-core',
+        'rs-DB'
 
