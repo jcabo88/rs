@@ -3,15 +3,6 @@ plugins {
     id "org.springframework.boot"
 }
 
-group 'com.rs'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-bootJar {
-    mainClassName = 'com.rs.Application'
-}
-
 dependencies {
 
     compile project(':rs-DB')

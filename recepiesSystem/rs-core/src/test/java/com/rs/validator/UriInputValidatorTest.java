@@ -19,10 +19,22 @@ class UriInputValidatorTest {
     @Test
     void validateNoNumericId() {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> UriInputValidator.validateId("1"));
+                () -> UriInputValidator.validateId("aaa"));
     }
 
     @Test
     void validateString() {
+        Assertions.assertDoesNotThrow(() -> UriInputValidator.validateString("abc"));
+    }
+
+    @Test
+    void validateNumericString() {
+        Assertions.assertDoesNotThrow(() -> UriInputValidator.validateString("1"));
+    }
+
+    @Test
+    void validateBlankString() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> UriInputValidator.validateString(""));
     }
 }
