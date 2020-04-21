@@ -17,7 +17,7 @@ public class Result {
         this.result = new RecipeResult();
     }
 
-    public Object getResult() {
+    public RecipeResult getResult() {
         return result;
     }
 

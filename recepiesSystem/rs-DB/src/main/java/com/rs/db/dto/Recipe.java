@@ -84,4 +84,19 @@ public class Recipe {
     public void setPreparationMethod(String preparationMethod) {
         this.preparationMethod = preparationMethod;
     }
+
+    public boolean equals(Object o) {
+        if (o instanceof Recipe) {
+            Recipe recipe = (Recipe) o;
+            if (this.index == recipe.index &&
+                    this.name == recipe.name &&
+                    this.timeToComplete == recipe.timeToComplete &&
+                    this.numberOfPersons == recipe.numberOfPersons &&
+                    this.description == recipe.description &&
+                    this.preparationMethod == recipe.preparationMethod) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
