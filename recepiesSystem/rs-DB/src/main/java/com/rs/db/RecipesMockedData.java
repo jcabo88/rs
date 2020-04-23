@@ -26,6 +26,8 @@ public class RecipesMockedData implements RecipesStorage {
                 1, "", ingredients1));
         recipes.add(new Recipe(2, "Tortilla francesa", "Batir los huevos y echarlos en la sarten", "5min",
                 1, "", ingredients1));
+        recipes.add(new Recipe(2, "Tortilla patatas", "Batir los huevos y echarlos en la sarten", "60min",
+                1, "", ingredients1));
         recipes.add(new Recipe(3, "Arroz blanco", "Freir el arroz durante 2 min "
                 + "y una vez hecho ponerlo a hervir durante 5 min", "7min", 2, "", ingredients2));
     }
@@ -54,9 +56,9 @@ public class RecipesMockedData implements RecipesStorage {
 //    }
 
     @Override
-    public List<Recipe> getRecipeByName(String title) {
+    public List<Recipe> getRecipeByName(String recipeKeyword) {
         return recipes.stream()
-                .filter(recipe -> recipe.getName().contains(title))
+                .filter(recipe -> recipe.getName().toLowerCase().contains(recipeKeyword.toLowerCase()))
                 .collect(Collectors.toList());
     }
 

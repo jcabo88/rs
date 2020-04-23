@@ -18,7 +18,7 @@ public class UriInputValidator {
     }
 
     public static void validateString(String stringId) throws InputValidationException {
-        if (StringUtils.isBlank(stringId)) {
+        if (StringUtils.isBlank(stringId) || StringUtils.isNumeric(stringId)) {
             throw new InputValidationException(ExceptionMessages.INPUT_EXCEPTION);
         }
     }

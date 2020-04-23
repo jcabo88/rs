@@ -23,8 +23,11 @@ public class RecipesSystemController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-//    @GetMapping("/recipes/name/{name}")
-//    public Result getRecipesByName(@PathVariable String name) throws InputValidationException{
-//        UriInputValidator.validateString(name);
-//    }
+    @GetMapping("/recipes/name/{name}")
+    public ResponseEntity<Result> getRecipesByName(@PathVariable String name) throws InputValidationException{
+        UriInputValidator.validateString(name);
+        Optional<Result> result = processResult.getRecipesByName(name);
+        return result.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
