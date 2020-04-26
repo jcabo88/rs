@@ -48,24 +48,10 @@ public class RecipesMockedData implements RecipesStorage {
                 .findAny();
     }
 
-//    @Override
-//    public List<Recipe> getRecipeByContent(String keyWord) {
-//        return recipes.stream()
-//                .filter(recipe -> recipe.getDescription().contains(keyWord))
-//                .collect(Collectors.toList());
-//    }
-
     @Override
     public List<Recipe> getRecipeByName(String recipeKeyword) {
         return recipes.stream()
                 .filter(recipe -> recipe.getName().toLowerCase().contains(recipeKeyword.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Recipe> getRecipeByTime(String time) {
-        return recipes.stream()
-                .filter(recipe -> recipe.getTimeToComplete().equalsIgnoreCase(time))
                 .collect(Collectors.toList());
     }
 }
