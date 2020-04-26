@@ -29,7 +29,8 @@ class UriInputValidatorTest {
 
     @Test
     void validateNumericString() {
-        Assertions.assertDoesNotThrow(() -> UriInputValidator.validateString("1"));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> UriInputValidator.validateString("2"));
     }
 
     @Test

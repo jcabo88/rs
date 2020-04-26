@@ -12,16 +12,14 @@ public interface RecipesStorage {
      * @param index
      * @return The recipe corresponding to the index
      */
-    public Optional<Recipe> getRecipeByIndex(int index);
+    Optional<Recipe> getRecipeByIndex(int index);
 
-//    /**
-//     * Obtain the Recipe from the db when
-//     * @param keyWord
-//     * @return
-//     */
-//    public List<Recipe> getRecipeByContent(String keyWord);
 
-    public List<Recipe> getRecipeByName(String name);
+    /**
+     * Obtain a lists of recipes from the db in case String name is part of the recipe's name.
+     * @param name
+     * @return The recipe corresponding to the index
+     */
+    List<Recipe> getRecipeByName(String name);
 
-    public List<Recipe> getRecipeByTime(String time);
 }

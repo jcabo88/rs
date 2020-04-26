@@ -29,8 +29,69 @@ public class Recipe {
         this.index = -1;
         this.description = new String();
         this.timeToComplete = new String();
-        this.description = new String();
+        this.preparationMethod = new String();
+        this.numberOfPersons = -1;
         this.ingredients = Collections.emptyList();
+    }
+
+    public Recipe(Builder builder){
+        this.name = builder.name;
+        this.index = builder.index;
+        this.description = builder.description;
+        this.timeToComplete = builder.timeToComplete;
+        this.preparationMethod = builder.preparationMethod;
+        this.numberOfPersons = builder.numberOfPersons;
+        this.ingredients = builder.ingredients;
+    }
+
+    public static class Builder {
+
+        private String name;
+        private String description;
+        private String timeToComplete;
+        private String preparationMethod;
+        private int index;
+        private int numberOfPersons;
+        private List<Ingredient> ingredients;
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder timeToComplete(String timeToComplete) {
+            this.timeToComplete = timeToComplete;
+            return this;
+        }
+
+        public Builder preparationMethod(String preparationMethod) {
+            this.preparationMethod = preparationMethod;
+            return this;
+        }
+
+        public Builder index(int index) {
+            this.index = index;
+            return this;
+        }
+
+        public Builder numberOfPersons(int numberOfPersons) {
+            this.numberOfPersons = numberOfPersons;
+            return this;
+        }
+
+        public Builder ingredients(List ingredients){
+            this.ingredients = ingredients;
+            return this;
+        }
+
+        public Recipe build() {
+            return new Recipe(this);
+        }
     }
 
     public int getIndex() { return index; }

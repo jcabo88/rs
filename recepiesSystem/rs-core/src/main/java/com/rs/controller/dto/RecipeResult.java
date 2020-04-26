@@ -6,26 +6,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RecipeResult {
 
-    @JsonProperty("recipe")
-    private Object recipe;
+    @JsonProperty("recipes")
+    private Object recipes;
 
     @JsonProperty("message")
     private String message;
 
     public RecipeResult(Builder builder) {
-        this.recipe = builder.recipe;
+        this.recipes = builder.recipes;
         this.message = builder.message;
     }
 
     public RecipeResult() {
     }
 
-    public Object getRecipe() {
-        return recipe;
+    public Object getRecipes() {
+        return recipes;
     }
 
-    public void setRecipe(Object recipe) {
-        this.recipe = recipe;
+    public void setRecipes(Object recipes) {
+        this.recipes = recipes;
     }
 
     public String getMessage() {
@@ -37,11 +37,11 @@ public class RecipeResult {
     }
 
     public static class Builder {
-        private Object recipe;
+        private Object recipes;
         private String message;
 
-        public Builder recipe(Object recipe){
-            this.recipe = recipe;
+        public Builder recipes(Object recipes){
+            this.recipes = recipes;
             return this;
         }
 
