@@ -44,7 +44,7 @@ public class RecipesMockedData implements RecipesStorage {
     @Override
     public Optional<Recipe> getRecipeByIndex(int index) {
         return recipes.stream()
-                .filter(recipe -> recipe.getIndex() == index)
+                .filter(recipe -> recipe.getId() == index)
                 .findAny();
     }
 

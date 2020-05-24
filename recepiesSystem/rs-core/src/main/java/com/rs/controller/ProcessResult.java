@@ -2,16 +2,22 @@ package com.rs.controller;
 
 import com.rs.controller.dto.RecipeResult;
 import com.rs.controller.dto.Result;
-import com.rs.db.RecipesMockedData;
 import com.rs.db.RecipesStorage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class ProcessResult {
 
     private static final String RECIPE_NOT_FOUND = "Recipe not Found";
-    private final RecipesStorage recipesStorage = RecipesMockedData.getInstance();
+
+    @Autowired
+    private RecipesStorage recipesStorage;
+
+    public ProcessResult() {}
 
     public Optional<Result> getRecipesByID(int id) {
         return getRecipeResultByID(id)
