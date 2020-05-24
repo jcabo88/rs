@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-@Configurable
 public class RecipesStorageDB implements RecipesStorage {
 
     @Autowired
@@ -22,10 +21,11 @@ public class RecipesStorageDB implements RecipesStorage {
 
     @Override
     public Optional<Recipe> getRecipeByIndex(int index) {
-        if (recipesRepository == null) {
-            throw new DatabaseException("Object recipesRepository is null");
+        try {
+            return ResultTransformer.mapToRecipe(recipesRepository.findById(index));
+        } catch (Exception e) {
+            throw new DatabaseException(e.getMessage());
         }
-        return ResultTransformer.mapToRecipe(recipesRepository.findById(index));
     }
 
     @Override

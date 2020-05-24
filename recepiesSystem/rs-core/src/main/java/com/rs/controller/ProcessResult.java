@@ -9,13 +9,17 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+// Spring uses component scanning to find the classes that it needs to auto-wire and insert into classes for IoC (Inversion of Control)
+// Basically, Spring is going to scan the project’s classpath (or paths you specified),
+// find all of the @Component classes and make them available for auto-wiring.
 @Component
 public class ProcessResult {
 
     private static final String RECIPE_NOT_FOUND = "Recipe not Found";
 
+    // Injects RecipesStorage when Process Result it is created
     @Autowired
-    private RecipesStorage recipesStorage;
+    public RecipesStorage recipesStorage;
 
     public ProcessResult() {}
 
