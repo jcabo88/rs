@@ -6,16 +6,16 @@ import java.util.List;
 public class Recipe {
 
     private String name;
-    private int index;
+    private int id;
     private String description;
     private String timeToComplete;
     private int numberOfPersons;
     private List<Ingredient> ingredients;
     private String preparationMethod;
 
-    public Recipe(int index, String name, String description, String timeToComplete,
+    public Recipe(int id, String name, String description, String timeToComplete,
                   int numberOfPersons, String preparationMethod, List<Ingredient> ingredients) {
-        this.index = index;
+        this.id = id;
         this.name = name;
         this.description = description;
         this.timeToComplete = timeToComplete;
@@ -26,7 +26,7 @@ public class Recipe {
 
     public Recipe() {
         this.name = new String();
-        this.index = -1;
+        this.id = -1;
         this.description = new String();
         this.timeToComplete = new String();
         this.preparationMethod = new String();
@@ -36,7 +36,7 @@ public class Recipe {
 
     public Recipe(Builder builder){
         this.name = builder.name;
-        this.index = builder.index;
+        this.id = builder.index;
         this.description = builder.description;
         this.timeToComplete = builder.timeToComplete;
         this.preparationMethod = builder.preparationMethod;
@@ -94,9 +94,9 @@ public class Recipe {
         }
     }
 
-    public int getIndex() { return index; }
+    public int getId() { return id; }
 
-    public void setIndex(int index) { this.index = index; }
+    public void setId(int id) { this.id = id; }
 
     public String getName() {
         return name;
@@ -149,7 +149,7 @@ public class Recipe {
     public boolean equals(Object o) {
         if (o instanceof Recipe) {
             Recipe recipe = (Recipe) o;
-            if (this.index == recipe.index &&
+            if (this.id == recipe.id &&
                     this.name == recipe.name &&
                     this.timeToComplete == recipe.timeToComplete &&
                     this.numberOfPersons == recipe.numberOfPersons &&

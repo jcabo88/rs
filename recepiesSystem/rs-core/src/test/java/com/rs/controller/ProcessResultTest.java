@@ -9,7 +9,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ProcessResultTest {
 
+    @InjectMocks
     private ProcessResult processResult;
 
     @Mock
@@ -73,24 +77,31 @@ class ProcessResultTest {
         this.processResult = new ProcessResult();
     }
 
+    @BeforeAll
+    public void initMocks(){
+        MockitoAnnotations.initMocks(this);
+    }
+
     @Test
     void getRecipeFromIndex() {
-//        Mockito.lenient().when(recipesStorage.getRecipeByIndex(1)).thenReturn(Optional.of(recipeHuevosFritos));
+        Mockito.lenient().when(recipesStorage.getRecipeByIndex(1)).thenReturn(Optional.of(recipeHuevosFritos));
         Optional<Result> result = processResult.getRecipesByID(1);
         assertTrue(recipeHuevosFritos.equals(result.get().getResult().getRecipes()));
     }
 
     @Test
     void getRecipeFromIndexEmptyResult() {
+//        when(recipesStorage.getRecipeByIndex(20)).thenReturn(Optional.empty());
         Optional<Result> result = processResult.getRecipesByID(20);
         assertTrue(RECIPE_NOT_FOUND.equals(result.get().getResult().getMessage()));
     }
 
     @Test
     void getRecipeFromName() {
-//        Mockito.lenient().when(recipesStorage.getRecipeByName(RECIPE_NAME)).thenReturn(Optional.of(testListContainsSameName));
+        Mockito.lenient().when(recipesStorage.getRecipeByName(RECIPE_NAME))
+                .thenReturn(testListContainsSameName);
         Optional<Result> result = processResult.getRecipesByName(RECIPE_NAME);
-        // TODO modify the test once the DB is ready
+
         Assertions.assertEquals(2,
                 ((ArrayList)result.get().getResult().getRecipes()).size());
     }
